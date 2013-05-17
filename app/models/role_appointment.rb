@@ -6,7 +6,7 @@ class RoleAppointment < ActiveRecord::Base
   has_many :editions, through: :edition_role_appointments
   has_many :news_articles, through: :edition_role_appointments, source: :edition, conditions: { "editions.type" => NewsArticle }
 
-  belongs_to :role
+  belongs_to :role, include: :organisations
   belongs_to :person
 
   delegate :slug, to: :person
