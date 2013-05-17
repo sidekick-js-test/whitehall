@@ -42,7 +42,7 @@ module Edition::AuditTrail
   end
 
   def document_audit_trail
-    document.editions.includes([:versions]).order("created_at asc").map.with_index do |edition, i|
+    document.editions.includes([:versions, :editorial_remarks]).order("created_at asc").map.with_index do |edition, i|
       edition.edition_audit_trail(i)
     end.flatten
   end
