@@ -14,7 +14,7 @@ module Edition::SupportingPages
   end
 
   included do
-    has_many :supporting_pages, foreign_key: :edition_id, dependent: :delete_all
+    has_many :supporting_pages, foreign_key: :edition_id, dependent: :delete_all, include: :edition
 
     add_trait Trait
   end

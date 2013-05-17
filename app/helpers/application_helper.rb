@@ -75,7 +75,7 @@ module ApplicationHelper
   end
 
   def related_policy_options
-    Policy.latest_edition.active.map do |policy|
+    Policy.latest_edition.active.includes([:translations]).map do |policy|
       parts = [policy.title]
       parts << "(#{policy.topics.map(&:name).to_sentence})" if policy.topics.any?
       [policy.id, parts.join(" ")]
