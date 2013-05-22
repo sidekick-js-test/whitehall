@@ -3,7 +3,7 @@
   <nav class="actions">
     <% if @missing_locales.any? %>
       <%= form_tag [:admin, @organisational_entity, @corporate_information_page, :translations] do %>
-        <%= label_tag :translation_locale, 'Locale' %>
+        <%= label_tag :translation_locale, 'Language' %>
         <%= select_locale :translation_locale, @missing_locales %>
         <%= submit_tag "Create translation", class: "btn btn-primary" %>
       <% end %>
@@ -15,7 +15,7 @@
 <table id="worldwide-organisations-translations" class="table table-striped">
   <thead>
     <tr>
-      <th>Locale</th>
+      <th>Language</th>
       <th>Actions</th>
     </tr>
   </thead>

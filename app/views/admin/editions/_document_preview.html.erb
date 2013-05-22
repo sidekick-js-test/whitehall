@@ -79,7 +79,7 @@
             <nav class="actions">
               <% if @edition.missing_translations.any? %>
                 <%= form_tag admin_edition_translations_path(@edition) do %>
-                  <%= label_tag :translation_locale, 'Locale' %>
+                  <%= label_tag :translation_locale, 'Language' %>
                   <%= select_locale :translation_locale, @edition.missing_translations %>
                   <%= submit_tag "Add translation", class: "btn btn-primary" %>
                 <% end %>

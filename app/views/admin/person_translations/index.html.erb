@@ -16,7 +16,7 @@
         <table id="person-translations" class="table table-striped">
           <thead>
             <tr>
-              <th>Locale</th>
+              <th>Language</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -37,7 +37,7 @@
         <nav class="form-actions">
           <% if @person.missing_translations.any? %>
             <%= form_tag admin_person_translations_path(@person) do %>
-              <%= label_tag :translation_locale, 'Locale' %>
+              <%= label_tag :translation_locale, 'Language' %>
               <%= select_locale :translation_locale, @person.missing_translations %>
               <%= submit_tag "Create translation", class: "btn btn-primary" %>
             <% end %>
