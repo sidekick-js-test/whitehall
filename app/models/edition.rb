@@ -143,7 +143,7 @@ class Edition < ActiveRecord::Base
 
   searchable(
     id: :id,
-    locale: :locale,
+    locale: -> d { I18n.locale },
     title: :title,
     link: :search_link,
     format: -> d { d.format_name.gsub(" ", "_") },
