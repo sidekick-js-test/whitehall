@@ -43,11 +43,7 @@ class PublicFacingController < ApplicationController
   end
 
   def search_backend
-    if Locale.current.english?
-      Whitehall.search_backend
-    else
-      Whitehall::DocumentFilter::Mysql
-    end
+    Whitehall.search_backend
   end
 
   def decorate_collection(collection, presenter_class)

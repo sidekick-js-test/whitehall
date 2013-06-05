@@ -40,6 +40,7 @@ module Whitehall::DocumentFilter
 
     def standard_filter_args
       default_filter_args
+        .merge(filter_by_locale)
         .merge(filter_by_keywords)
         .merge(filter_by_relevance_to_local_government)
         .merge(filter_by_people)
@@ -48,6 +49,14 @@ module Whitehall::DocumentFilter
         .merge(filter_by_locations)
         .merge(filter_by_date)
         .merge(sort)
+    end
+
+    def filter_by_locale
+      if locale
+        { locale: locale }
+      else
+        { locale: I18n.default_locale }
+      end
     end
 
     def filter_by_keywords
@@ -60,7 +69,7 @@ module Whitehall::DocumentFilter
 
     def filter_by_relevance_to_local_government
       if relevant_to_local_government
-        {relevant_to_local_government: "1"}
+        { relevant_to_local_government: "1" }
       else
         {}
       end
@@ -68,7 +77,7 @@ module Whitehall::DocumentFilter
 
     def filter_by_people
       if @people_ids.present? && @people_ids != ["all"]
-        {people: @people.map(&:slug)}
+        { people: @people.map(&:slug) }
       else
         {}
       end
@@ -76,7 +85,7 @@ module Whitehall::DocumentFilter
 
     def filter_by_topics
       if selected_topics.any?
-        {topics: selected_topics.map(&:slug)}
+        { topics: selected_topics.map(&:slug) }
       else
         {}
       end
@@ -84,7 +93,7 @@ module Whitehall::DocumentFilter
 
     def filter_by_organisations
       if selected_organisations.any?
-        {organisations: selected_organisations.map(&:slug)}
+        { organisations: selected_organisations.map(&:slug) }
       else
         {}
       end
@@ -92,7 +101,7 @@ module Whitehall::DocumentFilter
 
     def filter_by_locations
       if selected_locations.any?
-        {world_locations: selected_locations.map(&:slug)}
+        { world_locations: selected_locations.map(&:slug) }
       else
         {}
       end
@@ -102,9 +111,9 @@ module Whitehall::DocumentFilter
       if @date.present? && @direction.present?
         case @direction
         when "before"
-          {public_timestamp: {before: (@date - 1.day).to_s(:db)}}
+          { public_timestamp: { before: (@date - 1.day).to_s(:db) } }
         when "after"
-          {public_timestamp: {after: @date.to_s(:db) }}
+          { public_timestamp: { after: @date.to_s(:db) } }
         else
           {}
         end
@@ -117,9 +126,9 @@ module Whitehall::DocumentFilter
       if @direction.present? && @keywords.blank?
         case @direction
         when "before"
-          {order: { public_timestamp: "desc" } }
+          { order: { public_timestamp: "desc" } }
         when "after"
-          {order: { public_timestamp: "asc" } }
+          { order: { public_timestamp: "asc" } }
         else
           {}
         end
@@ -137,7 +146,7 @@ module Whitehall::DocumentFilter
         else
           Announcement.concrete_descendant_search_format_types - [WorldLocationNewsArticle.search_format_type]
         end
-      {search_format_types: announcement_types}
+      { search_format_types: announcement_types }
     end
 
     def filter_by_publication_type
@@ -147,7 +156,7 @@ module Whitehall::DocumentFilter
         else
           Publicationesque.concrete_descendant_search_format_types
         end
-      {search_format_types: publication_types}
+      { search_format_types: publication_types }
     end
 
     def documents
