@@ -147,9 +147,7 @@ module Whitehall
     def government_search_index
       Enumerator.new do |y|
         government_edition_classes.each do |klass|
-          klass.search_index.each do |search_index_entry|
-            y << search_index_entry
-          end
+          klass.reindex_all
         end
       end
     end

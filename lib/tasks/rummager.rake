@@ -11,7 +11,7 @@ namespace :rummager do
   namespace :index do
     desc "indexes only government documents"
     task :government => [:environment, :warn_about_no_op] do
-      Rummageable.index(Whitehall.government_search_index, Whitehall.government_search_index_path)
+      Whitehall.government_search_index
       Rummageable.commit(Whitehall.government_search_index_path)
     end
 
