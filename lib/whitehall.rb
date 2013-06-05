@@ -175,7 +175,8 @@ module Whitehall
         PolicyAdvisoryGroup,
         Person,
         CorporateInformationPage,
-        TakePartPage
+        TakePartPage,
+        WorldLocationNewsArticle,
       ]
       not_yet_searchable_classes = []
       if world_feature?
@@ -185,7 +186,6 @@ module Whitehall
         ]
       else
         not_yet_searchable_classes += [
-          WorldLocationNewsArticle,
           WorldwidePriority
         ]
       end
