@@ -105,6 +105,10 @@ rummager indices by running the following task from the rummager repo:
 
   RUMMAGER_INDEX=government bundle exec rake rummager:migrate_index
 
+Then reindex whitehall content:
+
+  RUMMAGER_HOST=http://search.dev.gov.uk bundle exec rake rummager:index:government
+
 ## Specifying a different endpoint for the GDS Content API
 
 Whitehall uses the GDS Content API to serve categorisation for
