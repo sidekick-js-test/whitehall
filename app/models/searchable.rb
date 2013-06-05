@@ -135,9 +135,12 @@ module Searchable
       if searchable_instance.can_index_in_search?
         if searchable_instance.class.ancestors.include?(Edition::Translatable)
           searchable_instance.translated_locales.each do |l|
-            I18n.with_locale l
-            Rummageable.index(searchable_instance.search_index, searchable_instance.rummager_index)
+            I18n.with_locale l do
+              Rummageable.index(searchable_instance.search_index, searchable_instance.rummager_index)
+            end
           end
+        else
+          Rummageable.index(searchable_instance.search_index, searchable_instance.rummager_index)
         end
       end
     end
