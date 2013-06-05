@@ -2,7 +2,7 @@ module Searchable
   extend ActiveSupport::Concern
 
   SEARCH_FIELDS = [
-    :id, :title, :link, :content,
+    :id, :title, :locale, :link, :content,
     :section, :subsection, :subsubsection,
     :format, :boost_phrases, :description,
     :organisations, :public_timestamp,
@@ -133,7 +133,12 @@ module Searchable
 
     def perform
       if searchable_instance.can_index_in_search?
-        Rummageable.index(searchable_instance.search_index, searchable_instance.rummager_index)
+        if searchable_instance.class.ancestors.include?(Edition::Translatable)
+          searchable_instance.translated_locales.each do |l|
+            I18n.with_locale l
+            Rummageable.index(searchable_instance.search_index, searchable_instance.rummager_index)
+          end
+        end
       end
     end
   end
