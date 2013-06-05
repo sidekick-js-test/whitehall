@@ -12,32 +12,22 @@
 
 <div class="block-2">
   <div class="inner-block">
-    <% if Locale.current.english? %>
-      <%= render partial: "documents/filter_form",
-                 locals: {
-                   document_type: :announcement,
-                   filters: [
-                     :keyword, :date, :announcement_type,
-                     :locations, :department, :topic,
-                     :relevant_to_local_government,
-                     :include_world_location_news
-                   ]
-                 } %>
-    <% else %>
-      <%= render partial: "documents/filter_form",
-                 locals: {
-                   document_type: :announcement,
-                   filters: [ :locations ]
-                 } %>
-    <% end %>
+    <%= render partial: "documents/filter_form",
+               locals: {
+                 document_type: :announcement,
+                 filters: [
+                   :keyword, :date, :announcement_type,
+                   :locations, :department, :topic,
+                   :relevant_to_local_government,
+                   :include_world_location_news
+                 ]
+               } %>
   </div>
 </div>
 
 <div class="block-4">
   <div class="inner-block">
-    <% if Locale.current.english? %>
-      <%= render partial: "documents/filter_results", locals: { filter: @filter } %>
-    <% end %>
+    <%= render partial: "documents/filter_results", locals: { filter: @filter } %>
     <%= render partial: 'shared/feeds',
         locals: { atom_url: filter_atom_feed_url,
                   govdelivery_url: filter_email_signup_url(document_type: 'announcement_type_all') }
