@@ -11,4 +11,4 @@ else
 fi
 echo
 bundle install
-bundle exec rails s thin -p 3020
+RUMMAGER_HOST=http://search.dev.gov.uk bundle exec rails s thin -p 3020
