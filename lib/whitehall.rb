@@ -175,8 +175,7 @@ module Whitehall
         PolicyAdvisoryGroup,
         Person,
         CorporateInformationPage,
-        TakePartPage,
-        WorldLocationNewsArticle,
+        TakePartPage
       ]
       not_yet_searchable_classes = []
       if world_feature?
