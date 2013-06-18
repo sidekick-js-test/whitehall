@@ -2,7 +2,13 @@ require 'fast_test_helper'
 
 class SearchIndexTest < ActiveSupport::TestCase
   def sample_document
-    {link: "/foo"}
+    {link: "/a_document"}
+  end
+
+  def sample_documents(n)
+    (1..n).map do |i|
+      {link: "/a_document_#{i}"}
+    end
   end
 
   test "can create an index" do
@@ -21,6 +27,34 @@ class SearchIndexTest < ActiveSupport::TestCase
       request.body == MultiJson.encode([sample_document]) &&
         request.headers['Content-Type'] == 'application/json' &&
         request.headers['Accept'] == 'application/json'
+    end
+  end
+
+  test "when we add a batch of documents, they are batch posted to rummager" do
+    stub_request(:post, "http://rummager.test/government/documents").
+      to_return(status: 200, body: '{"status":"OK"}')
+
+    index = SearchIndex.new("government", "http://rummager.test/")
+    index.add_batch(sample_documents(2))
+
+    assert_requested :post, "http://rummager.test/government/documents" do |request|
+      request.body == MultiJson.encode(sample_documents(2))
+    end
+  end
+
+  test "when we add a large number of batch of documents, they are split into smaller batches" do
+    stub_request(:post, "http://rummager.test/government/documents").
+      to_return(status: 200, body: '{"status":"OK"}')
+
+    sample = sample_documents(3)
+    index = SearchIndex.new("government", "http://rummager.test/", batch_size: 2)
+    index.add_batch(sample)
+
+    assert_requested :post, "http://rummager.test/government/documents", times: 1 do |request|
+      request.body == MultiJson.encode(sample[0..1])
+    end
+    assert_requested :post, "http://rummager.test/government/documents", times: 1 do |request|
+      request.body == MultiJson.encode(sample[2..2])
     end
   end
 
