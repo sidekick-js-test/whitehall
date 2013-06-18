@@ -133,7 +133,7 @@ module Searchable
 
     def perform
       if searchable_instance.can_index_in_search?
-        Rummageable.index(searchable_instance.search_index, searchable_instance.rummager_index)
+        # TODO: re-implement with RummagerClient
       end
     end
   end
@@ -145,7 +145,7 @@ module Searchable
     end
 
     def perform
-      Rummageable.delete(link, index)
+      # TODO: re-implement with RummagerClient
     end
   end
 end
