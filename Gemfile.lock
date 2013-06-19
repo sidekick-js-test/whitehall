@@ -398,6 +398,7 @@ DEPENDENCIES
   mysql2
   newrelic_rpm
   nokogiri
+  null_logger
   parallel_tests
   plek (= 1.1.0)
   quiet_assets

@@ -1,10 +1,12 @@
+require 'benchmark'
+
 class SearchIndex
   attr_reader :name
 
-  def initialize(name, rummager_url, options = {})
+  def initialize(rummager_url, name, options = {})
     @name = name
     @rummager_url = rummager_url.sub(%r{/$}, "")
-    @logger = options[:logger]
+    @logger = options[:logger] || NullLogger.instance
     @kernel = options[:kernel] || Kernel
     @retries = options[:retries] || 3
     @batch_size = options[:batch_size] || 100
@@ -32,7 +34,14 @@ class SearchIndex
 
 private
   def post_batch(batch)
-    RestClient.post(rummager_endpoint, MultiJson.encode(batch), content_type: :json, accept: :json)
+    response = nil
+    @logger.info "Posting #{batch.size} document(s) to #{rummager_endpoint}"
+    @logger.debug batch.map {|entry| entry['link']}.join(", ")
+    call_time = Benchmark.realtime do
+      response = RestClient.post(rummager_endpoint, MultiJson.encode(batch), content_type: :json, accept: :json)
+    end
+    @logger.debug "Response: #{response} took (#{call_time})"
+    response
   end
 
   def rummager_endpoint
@@ -43,9 +52,11 @@ private
     (1..@retries).each do |i|
       begin
         return yield
-      rescue RestClient::RequestFailed
+      rescue RestClient::RequestFailed => e
+        @logger.warn e
         raise if i == @retries
-        @kernel.sleep(5)
+        @logger.info "Retrying... attempt #{i}"
+        @kernel.sleep(5 * i)
       end
     end
   end
