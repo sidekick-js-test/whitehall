@@ -1,4 +1,8 @@
 require 'fast_test_helper'
+require 'mocha/setup'
+require 'webmock/test_unit'
+
+require 'search_index'
 
 class SearchIndexTest < ActiveSupport::TestCase
   def sample_document

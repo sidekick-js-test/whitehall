@@ -1,4 +1,5 @@
 require 'benchmark'
+require 'null_logger'
 
 class SearchIndex
   attr_reader :name
