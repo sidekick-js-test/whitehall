@@ -1,19 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
-require "rails"
+require "rails/all"
 
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "active_resource/railtie"
-require "rails/test_unit/railtie"
-require "sprockets/railtie"
-
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(:default, Rails.env)
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
+Bundler.require(:default, Rails.env)
 
 module Whitehall
   class Application < Rails::Application
@@ -25,21 +14,6 @@ module Whitehall
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/presenters #{config.root}/app/validators #{config.root}/app/workers)
-
-    # Only load the plugins named here, in the order given (default is alphabetical).
-    # :all can be used as a placeholder for all plugins not explicitly named.
-    # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-
-    # Activate observers that should always be running.
-    # Active record will be disabled when compiling assets.
-    if config.respond_to?(:active_record)
-      config.active_record.observers = [
-        :ministerial_role_search_index_observer,
-        :policy_search_index_observer,
-        :supporting_page_search_index_observer,
-        :corporate_information_page_search_index_observer
-      ]
-    end
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -57,17 +31,7 @@ module Whitehall
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
-    # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
-
-    # Enable the asset pipeline
-    config.assets.enabled = true
-    config.assets.initialize_on_precompile = true
-
     config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
-
-    # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
 
     config.assets.prefix = Whitehall.router_prefix + config.assets.prefix
     config.slimmer.wrapper_id = "whitehall-wrapper"
