@@ -2,9 +2,6 @@ require File.expand_path('../boot', __FILE__)
 
 require "rails"
 
-unless ENV["SKIP_OBSERVERS_FOR_ASSET_TASKS"].present? || ENV["DISABLE_ACTIVE_RECORD"].present?
-  require "active_record/railtie"
-end
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
@@ -13,7 +10,7 @@ require "sprockets/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require *Rails.groups(assets: %w(development test))
+  Bundler.require(:default, Rails.env)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
