@@ -131,8 +131,9 @@ GEM
     diffy (2.1.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    exception_notification (3.0.1)
+    exception_notification (4.0.0.rc1)
       actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (1.2.13)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -370,7 +371,7 @@ DEPENDENCIES
   delayed_job!
   delayed_job_active_record!
   diffy
-  exception_notification
+  exception_notification (= 4.0.0.rc1)
   factory_girl
   friendly_id (= 4.0.9)
   gds-api-adapters (= 7.2.0)
