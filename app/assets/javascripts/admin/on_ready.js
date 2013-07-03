@@ -1,10 +1,12 @@
 jQuery(document).ready(function($) {
   if(typeof GOVUK === 'undefined') { window.GOVUK = {}; }
-  $(".chzn-select").chosen({allow_single_deselect: true, search_contains: true});
-  $(".chzn-select-no-deselect").chosen({allow_single_deselect: false, search_contains: true});
   if(typeof ieVersion === 'undefined'){
-    $(".chzn-select-non-ie").addClass('chzn-select').chosen({allow_single_deselect: true, search_contains: true});
+    $(".chzn-select-non-ie").addClass('chzn-select');
   }
+  window.setTimeout(function(){
+    $(".chzn-select:visible").chosen({allow_single_deselect: true, search_contains: true});
+    $(".chzn-select-no-deselect:visible").chosen({allow_single_deselect: false, search_contains: true});
+  }, 9);
 
   $("#completed_fact_check_requests").markLinkedAnchor();
 

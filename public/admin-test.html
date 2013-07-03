@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
+  <!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+      <!-- http://t.co/dKP3o1e -->
+      <meta content="True" name="HandheldFriendly">
+      <meta content="320" name="MobileOptimized">
+      <meta content="width=device-width, initial-scale=1" name="viewport">
+
+      <title>New Consultation - Admin - Inside Government - GOV.UK</title>
+      <link href="/government/assets/vendor/bootstrap.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/vendor/chosen.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/vendor/media-player/player-core.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/vendor/media-player/player-fix.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/vendor/media-player/player-theme.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/admin/base.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/admin.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <!--[if gt IE 8]><!--><link href="/government/assets/vendor/bootstrap.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/vendor/chosen.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/vendor/media-player/player-core.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/vendor/media-player/player-fix.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/vendor/media-player/player-theme.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/admin/base.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/government/assets/admin.css?body=1" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
+      <!--[if IE 6]><link href="/government/assets/admin-ie6.css?body=1" media="screen" rel="stylesheet" type="text/css" /><script>var ieVersion = 6;</script><![endif]-->
+      <!--[if IE 7]><link href="/government/assets/admin-ie7.css?body=1" media="screen" rel="stylesheet" type="text/css" /><script>var ieVersion = 7;</script><![endif]-->
+      <!--[if IE 8]><link href="/government/assets/admin-ie8.css?body=1" media="screen" rel="stylesheet" type="text/css" /><script>var ieVersion = 8;</script><![endif]-->
+
+      <meta content="authenticity_token" name="csrf-param" />
+      <meta content="4DjXCcKH3hPA55j9l1tWhaY3QissqNrdGFsglm4RGnA=" name="csrf-token" />
+
+      <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+    </head>
+
+    <body>
+      <script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+      <header class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <ul class="nav website">
+            <li><a href="/government/admin" class="brand">IG Admin</a></li>
+            <li><a href="http://whitehall-frontend.dev.gov.uk/government" class="open_website">View website</a></li>
+          </ul>
+
+          <ul class="nav pull-right">
+            <li class=""><a href="/government/admin/users">Users</a></li>
+            <li class=""><a href="/government/admin/imports">Import</a></li>
+            <li class="session-info-wrapper">
+            <div id="session" class="session_info">
+              <p class="navbar-text">
+              <span class="current_user_name"><a href="/government/admin/users/1" id="#user_settings">Peter Herlihy</a></span> |
+              <span class="logout"><a href="/auth/gds/sign_out">Logout</a></span>
+              </p>
+            </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="js-toggle-nav" id="global-nav">
+          <nav class="nav-collapse">
+          <ul class="nav">
+            <li class="create-new js-create-new">
+            <strong><span>Create new </span>+</strong>
+            <ul class="dropdown-menu"><li><a href="/government/admin/policies/new" title="Create Policy">Policy</a></li><li><a href="/government/admin/publications/new" title="Create Publication">Publication</a></li><li><a href="/government/admin/news/new" title="Create News Article">News Article</a></li><li><a href="/government/admin/fatalities/new" title="Create Fatality Notice">Fatality Notice</a></li><li><a href="/government/admin/consultations/new" title="Create Consultation">Consultation</a></li><li><a href="/government/admin/speeches/new" title="Create Speech">Speech</a></li><li><a href="/government/admin/detailed-guides/new" title="Create Detailed Guide">Detailed Guide</a></li><li><a href="/government/admin/priority/new" title="Create Worldwide Priority">Worldwide Priority</a></li><li><a href="/government/admin/case-studies/new" title="Create Case Study">Case Study</a></li><li><a href="/government/admin/statistical-data-sets/new" title="Create Statistical Data Set">Statistical Data Set</a></li><li><a href="/government/admin/world-location-news/new" title="Create World Location News Article">World Location News Article</a></li></ul>
+            </li>
+            <li class="active"><a href="/government/admin/editions">Documents</a></li>
+            <li class=""><a href="/government/admin/document_series">Document Series</a></li>
+            <li class=" user-org"><a href="/government/admin/organisations/hm-treasury">HM Treasury</a></li>
+            <li><a href="#navigation" class="toggler">More&hellip;</a></li>
+            <ul class="nav content js-hidden">
+              <li class=""><a href="/government/admin/organisations">Departments &amp; agencies</a></li>
+              <li class=""><a href="/government/admin/policy_teams">Policy teams</a></li>
+              <li class=""><a href="/government/admin/policy_advisory_groups">Policy advisory groups</a></li>
+              <li class=""><a href="/government/admin/roles">Roles</a></li>
+              <li class=""><a href="/government/admin/people">People</a></li>
+              <li class=""><a href="/government/admin/topics">Topics</a></li>
+              <li class=""><a href="/government/admin/topical-events">Topical events</a></li>
+              <li class=""><a href="/government/admin/worldwide_organisations">Worldwide organisations</a></li>
+              <li class=""><a href="/government/admin/world_locations">World locations</a></li>
+              <li class=""><a href="/government/admin/operational_fields">Fields of operation</a></li>
+              <li class=""><a href="/government/admin/cabinet_ministers">Sort Cabinet Ministers</a></li>
+              <li class=""><a href="/government/admin/get-involved">Get involved</a></li>
+            </ul>
+          </ul>
+          </nav><!--/.nav-collapse -->
+        </div>
+
+      </div>
+
+      <section class="notices">
+
+      </section>
+      </header>
+
+      <div class="container-fluid ">
+        <section class="row-fluid">
+        <div class="span12">
+          <section>
+          <h1>Create Consultation</h1>
+          <form accept-charset="UTF-8" action="/government/admin/consultations" enctype="multipart/form-data" id="new_edition" method="post" class="tabbable">
+            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="4DjXCcKH3hPA55j9l1tWhaY3QissqNrdGFsglm4RGnA=" /></div>
+            <ul class="progress-tabs">
+              <li class="active"><a data-toggle="tab" href="#basic-fields">Basic fields</a></li>
+              <li><a data-toggle="tab" href="#associations">Associations <em>1</em></a></li>
+              <li><a data-toggle="tab" href="#consultation-info">Consultation info</a></li>
+              <li><a data-toggle="tab" href="#attachments">Consultation attachments</a></li>
+              <li><a data-toggle="tab" href="#consultation-response">Consultation response</a></li>
+
+              <li><a data-toggle="tab" href="#publish">Publish</a></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane active" id="basic-fields">
+                <div class="span8">
+                  <fieldset class="basic-fields">
+
+                    <input id="edition_lock_version" name="edition[lock_version]" type="hidden" value="0" />
+                    <label for="edition_title">Title</label><input id="edition_title" name="edition[title]" size="30" type="text" />
+                    <div class="title-length-info">Title text should be 65 characters or fewer and the slug will be truncated past 150. <span class="count"></span></div>
+
+                    <label for="edition_summary">Summary</label>
+                    <textarea class="js-summary-length-counting" cols="40" data-count-message-selector=".summary-length-info" data-count-message-threshold="140" id="edition_summary" name="edition[summary]" rows="2">
+                    </textarea>
+                    <div class="summary-length-info">Summary text should be 140 characters or fewer. <span class="count"></span></div>
+
+                    <label for="edition_body">Body</label>
+                    <textarea class="previewable" cols="9000" id="edition_body" name="edition[body]" rows="20">
+                    </textarea>
+                    <a href="#associations" class="btn btn-primary btn-large" data-toggle="tab">Save and continue &rarr;</a>
+                  </fieldset>
+                </div>
+                <div class="span4">
+                  <h1>Govspeak help</h1>
+                  <div>
+                    <p><a href="https://www.gov.uk/designprinciples/styleguide">View styleguide</a></p>
+                    <h3><a href="#govspeak-headings" data-toggle="collapse">Headings</a></h3>
+                    <div id="govspeak-headings" class="collapse">
+<pre>## Top level heading - H2
+### Second level heading - H3
+#### Third level heading - H4
+
+Don't use a single # - this is H1 and is for the title only
+
+</pre>
+
+                      </div>
+                    <h3><a href="#govspeak-links" data-toggle="collapse">Links</a></h3>
+                    <div id="govspeak-links" class="collapse">
+                      <h3>Internal links</h3>
+                      <p>Policies, publications, news, speeches, detailed guides etc. can be linked using URLs from within the admin interface</p>
+                      <pre>[link text](/government/admin/policies/3373 "Hover text goes here")</pre>
+
+                      <p>Series pages, topics, organisations, people, roles etc. should use public URLs from gov.uk</p>
+                      <pre>[link text](https://www.gov.uk/government/topics/climate-change "Hover text goes here")</pre>
+
+                      <h3>External links</h3>
+                      <p>Links with external URLs will automatically display as external links</p>
+                      <pre>[link text](http://www.example.com "Hover text goes here")</pre>
+                    </div>
+
+                    <h3><a href="#govspeak-lists" data-toggle="collapse">Lists</a></h3>
+                    <div id="govspeak-lists" class="collapse">
+                      <h3>Unordered List</h3>
+                      <pre>* item 1
+* item 2
+  * subitem
+  * another subitem
+(to indent add 2 spaces)</pre>
+                      <h3>Ordered List</h3>
+                      <pre>1. item 1
+2. item 2
+3. item 3
+  * subitem
+  * another subitem
+(to indent add 2 spaces)</pre>
+                    </div>
+
+                    <h3><a href="#govspeak-media" data-toggle="collapse">Media</a></h3>
+                    <div id="govspeak-media" class="collapse">
+                      <h3>Images</h3>
+                      <p>First upload your image(s), then:</p>
+                      <pre>!!<em>n</em></pre>
+                      <p>e.g. for the first image:</p>
+                      <pre>!!1</pre>
+
+                      <h3>Video links</h3>
+                      <p>Links to YouTube videos will automatically be displayed in an embedded media player.</p>
+                      <pre>[link text](youtube-video-url)</pre>
+                      <p>Use the title of the video for the "link text", e.g. :-</p>
+                      <pre>[The Queens Diamond Jubilee Concert](http://www.youtube.com/watch?v=OXHPWmnycno)</pre>
+
+                      <h3>Attachments</h3>
+                      <p><em>Not used on publications or consultations (attachments are placed automatically).</em></p>
+                      <p>First upload your attachment(s), then, to create an attachment callout box:</p>
+                      <pre>!@<em>n</em></pre>
+                      <p>Or, if you want to use a link to an attachment in a sentence or list:</p>
+                      <pre>[InlineAttachment:<em>n</em>]</pre>
+                      <p>e.g. for the first file:</p>
+                      <pre>!@1</pre>
+                      <p>or:</p>
+                      <pre>[InlineAttachment:1]</pre>
+                    </div>
+
+                    <h3><a href="#govspeak-tables" data-toggle="collapse">Tables</a></h3>
+                    <div id="govspeak-tables" class="collapse">
+                      <pre>| name | colour |
+|--------|-------|
+| apple | green |
+| banana | yellow |</pre>
+                    </div>
+
+                    <h3><a href="#govspeak-callout" data-toggle="collapse">Call out blocks</a></h3>
+                    <div id="govspeak-callout" class="collapse">
+                      <h3>Call to Action</h3>
+<pre>$CTA
+Click [here](link) to use tool
+$CTA</pre>
+                      <h3>Blockquotes</h3>
+                      <pre>As the P.M. said:
+
+> Rule Britannia!
+> Britannia rule the waves!</pre>
+
+                      <h3>Addresses</h3>
+<pre>$A
+Address
+Only
+Here
+$A</pre>
+
+                      <p>You can also embed contact information:</p>
+      <pre>[Contact:<em>n</em>]</pre>
+                      <p>Where <em>n</em> is the id of the contact you want to embed.  You can find this on the list of contacts for an <a href="/government/admin/organisations">organisation</a> or <a href="/government/admin/worldwide_organisations">worldwide organisation</a>.</p>
+                    </div>
+
+                    <h3><a href="#govspeak-acronyms" data-toggle="collapse">Acronyms</a></h3>
+                    <div id="govspeak-acronyms" class="collapse">
+                      <pre>*[DWP]: Department for Work and Pensions</pre>
+                    </div>
+
+                    <hr>
+                  <h1>Attachments</h1>
+                  <ol>
+                    <li><strong>Price of eggs 2009</strong> - <code>[Attachment:1]</code></li>
+                  </ol>
+                  <p><a data-toggle="tab" href="#attachments">Add new attachment</a></p>
+                  <h1>Images</h1>
+                  <ol>
+                    <li>No images exist for this edition</li>
+                  </ol>
+                  <p><a data-toggle="tab" href="#images">Add new image</a></p>
+                </div>
+
+              </section>
+
+              <section class="tab-pane" id="consultation-info">
+                <fieldset>
+                  <label for="edition_opening_on">Opening Date</label>
+                  <select class="date" id="edition_opening_on_1i" name="edition[opening_on(1i)]">
+                    <option value=""></option>
+                  </select>
+                  <select class="date" id="edition_opening_on_2i" name="edition[opening_on(2i)]">
+                    <option value=""></option>
+                  </select>
+                  <select class="date" id="edition_opening_on_3i" name="edition[opening_on(3i)]">
+                    <option value=""></option>
+                  </select>
+
+                  <label for="edition_closing_on">Closing Date</label>
+                  <select class="date" id="edition_closing_on_1i" name="edition[closing_on(1i)]">
+                    <option value=""></option>
+                  </select>
+                  <select class="date" id="edition_closing_on_2i" name="edition[closing_on(2i)]">
+                    <option value=""></option>
+                  </select>
+                  <select class="date" id="edition_closing_on_3i" name="edition[closing_on(3i)]">
+                    <option value=""></option>
+                  </select>
+                </fieldset>
+                <fieldset>
+                  <legend>Ways to respond</legend>
+                  <label for="edition_consultation_participation_attributes_link_url">Link URL</label><input id="edition_consultation_participation_attributes_link_url" name="edition[consultation_participation_attributes][link_url]" size="30" type="text" />
+                  <label for="edition_consultation_participation_attributes_email">Email</label><input id="edition_consultation_participation_attributes_email" name="edition[consultation_participation_attributes][email]" size="30" type="text" />
+                  <label for="edition_consultation_participation_attributes_postal_address">Postal address</label><textarea cols="40" id="edition_consultation_participation_attributes_postal_address" name="edition[consultation_participation_attributes][postal_address]" rows="4" style="width: auto">
+                  </textarea>
+                  <label for="edition_consultation_participation_attributes_consultation_response_form_attributes_title">Downloadable response form title</label><input id="edition_consultation_participation_attributes_consultation_response_form_attributes_title" name="edition[consultation_participation_attributes][consultation_response_form_attributes][title]" size="30" type="text" />
+                  <input id="edition_consultation_participation_attributes_consultation_response_form_attributes_consultation_response_form_data_attributes_file" name="edition[consultation_participation_attributes][consultation_response_form_attributes][consultation_response_form_data_attributes][file]" type="file" /><input id="edition_consultation_participation_attributes_consultation_response_form_attributes_consultation_response_form_data_attributes_file_cache" name="edition[consultation_participation_attributes][consultation_response_form_attributes][consultation_response_form_data_attributes][file_cache]" type="hidden" />
+                </fieldset>
+                <a href="#attachments" class="btn btn-primary btn-large" data-toggle="tab">Save and continue &rarr;</a>
+              </section>
+
+
+              <section class="tab-pane" id="images">
+                <fieldset class="images multiple_file_uploads" id="image_fields">
+                  <legend>Images</legend>
+
+                  <div class="file_upload well">
+                    <h3>New image</h3>
+
+                    <label for="edition_images_attributes_0_image_data_attributes_file">File</label><input id="edition_images_attributes_0_image_data_attributes_file" name="edition[images_attributes][0][image_data_attributes][file]" type="file" /><input id="edition_images_attributes_0_image_data_attributes_file_cache" name="edition[images_attributes][0][image_data_attributes][file_cache]" type="hidden" />
+                    <label for="edition_images_attributes_0_alt_text">Alt text</label><input id="edition_images_attributes_0_alt_text" name="edition[images_attributes][0][alt_text]" size="30" type="text" />
+                    <label for="edition_images_attributes_0_caption">Caption</label><textarea cols="40" id="edition_images_attributes_0_caption" name="edition[images_attributes][0][caption]" rows="2">
+                    </textarea>
+                  </div>
+                </fieldset>
+                <a href="#basic" class="btn btn-primary btn-large" data-toggle="tab">Save and continue &rarr;</a>
+              </section>
+
+              <section class="tab-pane" id="attachments">
+                <fieldset id="edition_attachment_fields" class="attachments multiple_file_uploads tabbable">
+                  <legend>Attachments - Consultation documents</legend>
+
+                  <ul class="nav nav-tabs attachment-mode-select">
+                    <li class="active">
+                    <a href="#bulk_upload_attachments"><label class="radio inline" data-target="#bulk_upload_attachments"><input id="attachment_mode_bulk" name="attachment_mode" type="radio" value="bulk" /> Bulk upload</label></a>
+                    </li>
+                    <li>
+                    <a href="#individual_upload_attachments"><label class="radio inline" data-target="#individual_upload_attachments"><input checked="checked" id="attachment_mode_individual" name="attachment_mode" type="radio" value="individual" /> Individual upload</label></a>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content">
+                    <section id="bulk_upload_attachments" class="tab-pane active">
+
+
+                    <label for="bulk_upload_zip_file_zip_file">Zip file</label>
+                    <input id="bulk_upload_zip_file_zip_file" name="bulk_upload_zip_file[zip_file]" type="file" />
+                    <div class="form-actions">
+                      <input class="btn btn-primary btn-large" name="commit" type="submit" value="Bulk upload" />
+                    </div>
+                    </section>
+                    <section id="individual_upload_attachments" class="tab-pane">
+
+                    <div class="file_upload well">
+                      <h3>New attachment</h3>
+
+                      <label for="edition_edition_attachments_attributes_0_attachment_attributes_title">Title</label><input id="edition_edition_attachments_attributes_0_attachment_attributes_title" name="edition[edition_attachments_attributes][0][attachment_attributes][title]" size="30" type="text" />
+
+                      <label for="edition_edition_attachments_attributes_0_attachment_attributes_isbn">ISBN</label><input id="edition_edition_attachments_attributes_0_attachment_attributes_isbn" name="edition[edition_attachments_attributes][0][attachment_attributes][isbn]" size="30" type="text" />
+                      <label for="edition_edition_attachments_attributes_0_attachment_attributes_unique_reference">Unique reference</label><input id="edition_edition_attachments_attributes_0_attachment_attributes_unique_reference" name="edition[edition_attachments_attributes][0][attachment_attributes][unique_reference]" size="30" type="text" />
+                      <label for="edition_edition_attachments_attributes_0_attachment_attributes_command_paper_number">Command paper number</label><input id="edition_edition_attachments_attributes_0_attachment_attributes_command_paper_number" name="edition[edition_attachments_attributes][0][attachment_attributes][command_paper_number]" size="30" type="text" />
+                      <label for="edition_edition_attachments_attributes_0_attachment_attributes_order_url">Order URL</label><input id="edition_edition_attachments_attributes_0_attachment_attributes_order_url" name="edition[edition_attachments_attributes][0][attachment_attributes][order_url]" size="30" type="text" />
+                      <label for="edition_edition_attachments_attributes_0_attachment_attributes_price">Price in £s</label><input id="edition_edition_attachments_attributes_0_attachment_attributes_price" name="edition[edition_attachments_attributes][0][attachment_attributes][price]" size="30" type="text" />
+
+
+                      <label for="edition_edition_attachments_attributes_0_attachment_attributes_attachment_data_attributes_file">File</label>
+                      <input id="edition_edition_attachments_attributes_0_attachment_attributes_attachment_data_attributes_file" name="edition[edition_attachments_attributes][0][attachment_attributes][attachment_data_attributes][file]" type="file" />
+
+                      <label class="checkbox" for="edition_edition_attachments_attributes_0_attachment_attributes_accessible"><input name="edition[edition_attachments_attributes][0][attachment_attributes][accessible]" type="hidden" value="0" /><input id="edition_edition_attachments_attributes_0_attachment_attributes_accessible" name="edition[edition_attachments_attributes][0][attachment_attributes][accessible]" type="checkbox" value="1" />Attachment is accessible</label>
+                      <input id="edition_edition_attachments_attributes_0_attachment_attributes_attachment_data_attributes_file_cache" name="edition[edition_attachments_attributes][0][attachment_attributes][attachment_data_attributes][file_cache]" type="hidden" />
+                    </div>
+                    </section>
+                  </div>
+
+                </fieldset>
+
+
+                <fieldset id="html_version_fields">
+                  <legend>HTML version</legend>
+
+                  <span class='help-block'>These fields are optional: if you don't require an HTML version, please leave them blank.</span>
+
+
+                  <label for="edition_html_version_attributes_title">HTML version title</label><input id="edition_html_version_attributes_title" name="edition[html_version_attributes][title]" size="30" type="text" />
+
+                  <label for="edition_html_version_attributes_body">HTML version text</label><textarea class="previewable" cols="40" id="edition_html_version_attributes_body" name="edition[html_version_attributes][body]" rows="20">
+                  </textarea>
+                </fieldset>
+                <a href="#consultation-response" class="btn btn-primary btn-large" data-toggle="tab">Save and continue &rarr;</a>
+              </section>
+
+              <section class="tab-pane" id="associations">
+                <fieldset>
+                  <legend>Associations</legend>
+
+                  <div class="default-text">
+                    <p class="default-label">Lead organisation</p><p class="default"><strong>HM Treasury</strong> <a href="#" class="edit">edit</a></p>
+                    <div class="fields">
+                      <fieldset class="named span4">
+                        <legend>Lead organisations</legend>
+
+                        <label for="edition_lead_organisation_ids_1">Organisation 1<select class="chzn-select-non-ie" data-placeholder="Choose a lead organisation which produced this document..." id="edition_lead_organisation_ids_1" name="edition[lead_organisation_ids][]"><option value=""></option><option value="1">Attorney General&#x27;s Office (AGO)</option>
+                            <option value="551">Groceries Code Adjudicator (GCA)</option></select></label>
+                        <a href="#">+ add another lead organisation</a>
+                      </fieldset>
+
+                      <fieldset class="named span4">
+                        <legend>Supporting organisations</legend>
+
+                        <label for="edition_supporting_organisation_ids_1">Organisation 1<select class="chzn-select-non-ie" data-placeholder="Choose a supporting organisation which produced this document..." id="edition_supporting_organisation_ids_1" name="edition[supporting_organisation_ids][]"><option value=""></option><option value="1">Attorney General&#x27;s Office (AGO)</option>
+                            <option value="551">Groceries Code Adjudicator (GCA)</option></select></label>
+                        <a href="#">+ add another supporting organisation</a>
+                      </fieldset>
+                    </div>
+                  </div>
+
+                  <div class="default-text">
+                    <p class="default-label">Related policies</p><p class="default"><strong>none</strong> <a href="#" class="edit">edit</a></p>
+                    <div class="fields">
+                      <input name="edition[related_policy_ids][]" type="hidden" value="" /><select data-placeholder="Choose related policies..." id="edition_related_policy_ids" name="edition[related_policy_ids][]"><option value=""></option>
+                      <option value="208231">Supporting economic growth through local enterprise partnerships and enterprise zones (Transport and Economic growth)</option></select>
+                    </div>
+                  </div>
+
+
+                  <div class="default-text">
+                    <p class="default-label">Document series</p><p class="default"><strong>none</strong> <a href="#" class="edit">edit</a></p>
+                    <div class="fields">
+                      <input name="edition[document_series_ids][]" type="hidden" value="" /><select class="chzn-select" data-placeholder="Choose series this document is a part of..." id="edition_document_series_ids" multiple="multiple" name="edition[document_series_ids][]"><option value=""></option><optgroup label="HM Treasury"><option value="1052">HMT exceptions to cross-government moratoria on spending</option>
+                      <option value="1487">Equality and diversity at VOSA</option></optgroup><optgroup label="Groceries Code Adjudicator"><option value="1489">GCA</option></optgroup></select>
+                    </div>
+                  </div>
+
+
+                  <div class="default-text">
+                    <p class="default-label">Ministers</p><p class="default"><strong>none</strong> <a href="#" class="edit">edit</a></p>
+                    <div class="fields">
+                      <input name="edition[ministerial_role_ids][]" type="hidden" value="" /><select class="chzn-select" data-placeholder="Choose ministers..." id="edition_ministerial_role_ids" multiple="multiple" name="edition[ministerial_role_ids][]"><option value=""></option>
+                      <option value="35">Parliamentary Under Secretary of State for Intellectual Property, in Department for Business, Innovation &amp; Skills (Viscount Younger of Leckie)</option></select>
+                    </div>
+                  </div>
+
+                  <div class="default-text">
+                    <p class="default-label">Topical events</p><p class="default"><strong>none</strong> <a href="#" class="edit">edit</a></p>
+                    <div class="fields">
+                      <input name="edition[topical_event_ids][]" type="hidden" value="" /><select class="chzn-select" data-placeholder="Choose topical events..." id="edition_topical_event_ids" multiple="multiple" name="edition[topical_event_ids][]"><option value="71">Autumn Statement 2012</option>
+                      <option value="62">UK Presidency of G8 2013</option></select>
+                    </div>
+                  </div>
+
+                  <div class="default-text">
+                    <p class="default-label">Worldwide priorities</p><p class="default"><strong>none</strong> <a href="#" class="edit">edit</a></p>
+                    <div class="fields">
+                      <input name="edition[worldwide_priority_ids][]" type="hidden" value="" /><select class="chzn-select" data-placeholder="Choose worldwide priorities..." id="edition_worldwide_priority_ids" multiple="multiple" name="edition[worldwide_priority_ids][]"><option value="195629">Achieving a comprehensive settlement in Cyprus</option>
+                      <option value="147724">Working with Vietnam for international peace and security</option></select>
+                    </div>
+                  </div>
+
+
+                  <div class="default-text">
+                    <p class="default-label">Alternative format email</p><p class="default"><strong>HM Treasury (editor@hmtreasury.gsi.gov.uk)</strong> <a href="#" class="edit">edit</a></p>
+                    <div class="fields">
+                      <select class="chzn-select" data-placeholder="Choose which organisation will provide alternative formats..." id="edition_alternative_format_provider_id" name="edition[alternative_format_provider_id]"><option value=""></option>
+                      <option value="551">Groceries Code Adjudicator (enquiries@bis.gsi.gov.uk)</option></select><p class="help-block">If the email address you need isn&#x27;t here, it should be added to the relevant Department or Agency</p>
+                    </div>
+                  </div>
+
+
+                  <div class="default-text">
+                    <p class="default-label">Excluded nations</p><p class="default"><strong>none</strong> <a href="#" class="edit">edit</a></p>
+                    <div class="fields control-group form-horizontal">
+                      <label class="control-label" for="edition_related_policy_ids">Wales</label><div class="controls"><input type="checkbox"><input type="text"></div>
+                      <label class="control-label" for="edition_related_policy_ids">Scotland</label><div class="controls"><input type="checkbox"><input type="text"></div>
+                      <label class="control-label" for="edition_related_policy_ids">Northern Ireland</label><div class="controls"><input type="checkbox"><input type="text"></div>
+                    </div>
+                  </div>
+
+                </fieldset>
+                <a href="#consultation-info" class="btn btn-primary btn-large" data-toggle="tab">Save and continue &rarr;</a>
+              </section>
+
+              <section class="tab-pane" id="consultation-response">
+                <fieldset>
+                  <legend>Consultation response</legend>
+
+                  <label for="edition_response_attributes_published_on">Response published date (leave blank to use the time the first attachment was uploaded)</label>
+                  <select class="date" id="edition_response_attributes_published_on_1i" name="edition[response_attributes][published_on(1i)]">
+                    <option value=""></option>
+                  </select>
+                  <select class="date" id="edition_response_attributes_published_on_2i" name="edition[response_attributes][published_on(2i)]">
+                    <option value=""></option>
+                  </select>
+                  <select class="date" id="edition_response_attributes_published_on_3i" name="edition[response_attributes][published_on(3i)]">
+                    <option value=""></option>
+                  </select>
+                  &mdash; <select class="date" id="edition_response_attributes_published_on_4i" name="edition[response_attributes][published_on(4i)]">
+                    <option value=""></option>
+                  </select>
+                  : <select class="date" id="edition_response_attributes_published_on_5i" name="edition[response_attributes][published_on(5i)]">
+                    <option value=""></option>
+                  </select>
+
+                  <label for="edition_response_attributes_summary">Summary</label><textarea cols="40" id="edition_response_attributes_summary" name="edition[response_attributes][summary]" rows="2">
+                  </textarea>
+                  <fieldset id="consultation_response_attachment_fields" class="attachments multiple_file_uploads tabbable">
+                    <legend>Attachments - Consultation response documents</legend>
+
+
+                    <div class="file_upload well">
+                      <h3>New attachment</h3>
+
+                      <label for="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_title">Title</label><input id="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_title" name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][title]" size="30" type="text" />
+
+                      <label for="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_isbn">ISBN</label><input id="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_isbn" name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][isbn]" size="30" type="text" />
+                      <label for="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_unique_reference">Unique reference</label><input id="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_unique_reference" name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][unique_reference]" size="30" type="text" />
+                      <label for="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_command_paper_number">Command paper number</label><input id="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_command_paper_number" name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][command_paper_number]" size="30" type="text" />
+                      <label for="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_order_url">Order URL</label><input id="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_order_url" name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][order_url]" size="30" type="text" />
+                      <label for="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_price">Price in £s</label><input id="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_price" name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][price]" size="30" type="text" />
+
+
+                      <label for="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_attachment_data_attributes_file">File</label>
+                      <input id="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_attachment_data_attributes_file" name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][attachment_data_attributes][file]" type="file" />
+
+                      <label class="checkbox" for="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_accessible"><input name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][accessible]" type="hidden" value="0" /><input id="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_accessible" name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][accessible]" type="checkbox" value="1" />Attachment is accessible</label>
+                      <input id="edition_response_attributes_consultation_response_attachments_attributes_0_attachment_attributes_attachment_data_attributes_file_cache" name="edition[response_attributes][consultation_response_attachments_attributes][0][attachment_attributes][attachment_data_attributes][file_cache]" type="hidden" />
+                    </div>
+
+                  </fieldset>
+                </fieldset>
+                <a href="#publish" class="btn btn-primary btn-large" data-toggle="tab">Save and continue &rarr;</a>
+              </section>
+
+
+              <section class="tab-pane" id="publish">
+                <fieldset>
+                  <legend>Access Limiting</legend>
+                  <label class="checkbox" for="edition_access_limited"><input name="edition[access_limited]" type="hidden" value="0" /><input id="edition_access_limited" name="edition[access_limited]" type="checkbox" value="1" />Limit access to producing organisations prior to publication</label>
+                </fieldset>
+                <fieldset>
+                  <legend>Scheduled publication</legend>
+                  <input id="" name="scheduled_publication_active" type="hidden" value="0" />
+                  <label class="checkbox js-toggle-scheduled-publication-date-picker" for="scheduled_publication_active">
+                    <input id="scheduled_publication_active" name="scheduled_publication_active" type="checkbox" value="1" /> Schedule for publication
+                    </label>  <div class="scheduled_publication">
+                    <label for="edition_scheduled_publication">Scheduled publication</label>
+                    <select class="date" id="edition_scheduled_publication_1i" name="edition[scheduled_publication(1i)]">
+                      <option selected="selected" value="2013">2013</option>
+                    </select>
+                    <select class="date" id="edition_scheduled_publication_2i" name="edition[scheduled_publication(2i)]">
+                      <option selected="selected" value="6">June</option>
+                    </select>
+                    <select class="date" id="edition_scheduled_publication_3i" name="edition[scheduled_publication(3i)]">
+                      <option selected="selected" value="25">25</option>
+                    </select>
+                    &mdash; <select class="date" id="edition_scheduled_publication_4i" name="edition[scheduled_publication(4i)]">
+                      <option selected="selected" value="09">09</option>
+                    </select>
+                    : <select class="date" id="edition_scheduled_publication_5i" name="edition[scheduled_publication(5i)]">
+                      <option selected="selected" value="30">30</option>
+                    </select>
+
+                  </div>
+                </fieldset>
+                <div class="publishing-controls well">
+                  <div class="form-actions">
+                    <input class="btn btn-primary btn-large" name="commit" type="submit" value="Save" /><span class="or_cancel"> or <a href="/government/admin/editions">cancel</a></span>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </form>
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <script src="/government/assets/jquery.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/jquery-ui.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/vendor/jquery/jquery.player.min.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/bootstrap.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/common/double_click_protection.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/common/duplicate_fields.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/common/elemental.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/common/flashnotice.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/common/jquery.enhanceYoutubeVideoLinks.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/common/mark_linked_anchor.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/common/on_ready.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/application/toggler.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/audit_trail.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/author_filter.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/autocomplete.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/chosen.jquery.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/create-new.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/document_list.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/edition_publishing.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/featured_topics_and_policies.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/featuring.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/multiple_file_upload.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/non-english-editions.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/on_ready.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/organisation_contact_form.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/organisation_filter.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/preview.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/sortable.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/speed_tagging.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/summary_length_counting.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/update_speech_headers.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin/world_location_filter.js?body=1" type="text/javascript"></script>
+  <script src="/government/assets/admin.js?body=1" type="text/javascript"></script>
+</body>
+</html>
+<script type="text/javascript">/*<![CDATA[*/
+if (typeof(console) !== 'undefined' && console.log) {
+  if (console.groupCollapsed && console.groupEnd) {
+    console.groupCollapsed("Uniform Notifier");
+    console.log("user: vagrant\nNeed Counter Cache\n  Policy => [:topics]");
+    console.groupEnd();
+  } else {
+    console.log("user: vagrant\nNeed Counter Cache\n  Policy => [:topics]");
+  }
+}
+
+/*]]>*/</script>
+
+<script type="text/javascript">/*<![CDATA[*/
+if (typeof(console) !== 'undefined' && console.log) {
+if (console.groupCollapsed && console.groupEnd) {
+console.groupCollapsed("Uniform Notifier");
+console.log("user: vagrant\nUnused Eager Loading detected\n  DocumentSeries => [:organisation]\n  Remove from your finder: :include => [:organisation]");
+console.groupEnd();
+} else {
+console.log("user: vagrant\nUnused Eager Loading detected\n  DocumentSeries => [:organisation]\n  Remove from your finder: :include => [:organisation]");
+}
+}
+
+/*]]>*/</script>
+
+
+
+

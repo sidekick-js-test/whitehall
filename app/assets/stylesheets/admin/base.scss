@@ -1,4 +1,5 @@
 @import "_conditionals";
+@import "_css3";
 @import "_shims";
 @import "_colours";
 
@@ -27,3 +28,81 @@
 // Controller specific styles. Usually named after the controller whos views
 // they relate to
 @import "views/_dashboard.scss";
+
+.basic-fields {
+  margin-top: 0;
+}
+
+.progress-tabs {
+  display: block;
+  margin: 0 0 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  @extend %contain-floats;
+
+  li {
+    display: block;
+    float: left;
+
+    &:after {
+      color: #999;
+      content: '\2192';
+      padding: 0 1em;
+    }
+    &:last-child:after {
+      content: '';
+    }
+
+    em {
+      font-style: normal;
+      padding: 0 5px;
+      background: #ccc;
+      color: #000;
+      @include border-radius(5px);
+    }
+  }
+}
+
+.tab-pane {
+  & > fieldset {
+    margin-top: 0;
+  }
+  legend {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+.default-text {
+  @extend %contain-floats;
+
+  .default-label {
+    float: left;
+    display: block;
+    width: 140px;
+    text-align: right;
+    margin-right: 20px;
+    margin-bottom: 0;
+    line-height: 30px;
+  }
+  p.default {
+    float: left;
+    line-height: 30px;
+
+    strong {
+      padding-right: 10px;
+    }
+  }
+  .fields {
+    display: none;
+    float: left;
+    width: 60%;
+
+    .controls {
+      input[type="text"] {
+        width: 50%;
+        margin-left: 20px;
+      }
+    }
+  }
+}
