@@ -1,7 +1,7 @@
 module Admin::AttachableHelper
 
   def typecast_for_attachable_routing(attachable)
-    attachable.is_a?(Edition) ? attachable.becomes(Edition) : attachable
+    attachable.is_a?(Edition) ? attachable.becomes(Edition) : attachable.becomes(Response)
   end
 
   def attachable_editing_tabs(attachable, &blk)
