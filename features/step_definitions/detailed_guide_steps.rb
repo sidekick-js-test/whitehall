@@ -14,31 +14,9 @@ Given /^(\d+) published detailed guides for the organisation "([^"]*)"$/ do |cou
   count.to_i.times { |i| create(:published_detailed_guide, title: "keyword-#{i}", organisations: [organisation]) }
 end
 
-When /^I draft a new detailed guide "([^"]*)"$/ do |title|
-  category = create(:mainstream_category)
-  begin_drafting_document type: 'detailed_guide', title: title, primary_mainstream_category: category
-  click_button "Save"
-end
-
-When /^I draft a new detailed guide "([^"]*)" in the "([^"]*)" and "([^"]*)" topics$/ do |title, first_topic, second_topic|
-  category = create(:mainstream_category)
-  begin_drafting_document type: 'detailed_guide', title: title, primary_mainstream_category: category
-  select first_topic, from: "Topics"
-  select second_topic, from: "Topics"
-  click_button "Save"
-end
-
-When /^I draft a new detailed guide "([^"]*)" related to the detailed guide "([^"]*)"$/ do |title, related_title|
-  category = create(:mainstream_category)
-  related_guide = DetailedGuide.latest_edition.find_by_title!(related_title)
-  begin_drafting_document type: 'detailed_guide', title: title, primary_mainstream_category: category
-  select related_title, from: "Related guides"
-  click_button "Save"
-end
-
-Given /^I start drafting a new detailed guide$/ do
-  category = create(:mainstream_category)
-  begin_drafting_document type: 'detailed_guide', title: "Detailed Guide", primary_mainstream_category: category
+Given /^I am editing a draft detailed guide$/ do
+  detailed_guide = create(:draft_detailed_guide)
+  visit edit_admin_edition_path(detailed_guide)
 end
 
 When /^I visit the detailed guide "([^"]*)"$/ do |name|
