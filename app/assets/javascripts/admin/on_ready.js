@@ -84,4 +84,7 @@ jQuery(document).ready(function($) {
       });
     }
   });
+
+  // Document series document finder
+  GOVUK.documentFinder.init('.document-finder');
 })
