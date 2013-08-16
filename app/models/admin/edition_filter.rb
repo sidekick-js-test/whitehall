@@ -17,14 +17,14 @@ module Admin
         editions = editions.with_title_containing(options[:title]) if options[:title]
         editions = editions.in_world_location(selected_world_locations) if selected_world_locations.any?
         editions.includes(:last_author, :translations).order("editions.updated_at DESC")
-      ).page(options[:page]).per(page_size)
+      ).page(options[:page]).per( options[:per_page] || default_page_size )
     end
 
     def page_title
       "#{ownership} #{edition_state} #{document_type.humanize.pluralize.downcase}#{title_matches}#{location_matches}".squeeze(' ')
     end
 
-    def page_size
+    def default_page_size
       50
     end
 
