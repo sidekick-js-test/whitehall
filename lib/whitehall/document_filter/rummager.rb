@@ -1,4 +1,5 @@
 require 'whitehall/document_filter/filterer'
+require 'ostruct'
 
 module Whitehall::DocumentFilter
   class Rummager < Filterer
@@ -141,21 +142,84 @@ module Whitehall::DocumentFilter
       {search_format_types: publication_types}
     end
 
-    def documents
-      if @results.empty? || @results['results'].blank?
-        @documents ||= Kaminari.paginate_array([]).page(@page).per(@per_page)
-      else
-        objects = Edition.published.with_translations.includes(self.edition_eager_load).where(id: @results['results'].map{ |h| h["id"] })
-        sorted = @results['results'].map do |doc|
-          objects.detect { |obj| obj.id == doc['id'] }
-        end.compact
+    class Result < OpenStruct
+      def initialize(doc, all_orgs, all_doc_series, all_operation_fields)
+        @all_orgs = all_orgs
+        @all_doc_series = all_doc_series
+        @all_operation_fields = all_operation_fields
+        super(doc)
+      end
 
-        @documents ||= Kaminari.paginate_array(sorted, total_count: @results['total']).page(@page).per(@per_page)
+      def public_timestamp
+        Time.zone.parse(super)
+      end
+
+      def part_of_series?
+        document_series && document_series.any?
+      end
+
+      def organisations
+        orgs = super || []
+        @all_orgs.select {|org| orgs.include?(org.slug)}
+      end
+
+      def document_series
+        doc_series = super || []
+        @all_doc_series.select {|ds| doc_series.include?(ds.slug)}
+      end
+
+      def operational_field
+        op_field = super || []
+        @all_operation_fields.select {|of| op_field.include?(of.slug)}.first
       end
     end
 
-    def results
-      @results['results']
+    class ResultSet
+      def initialize(results, page, per_page)
+        @docs = results['results']
+        @organisations = find_organisations(@docs)
+        @document_series = find_document_series(@docs)
+        @operational_fields = find_operational_fields(@docs)
+        @page = page
+        @per_page = per_page
+        @results = results
+      end
+
+      def find_organisations(results)
+        return [] if results.empty?
+        slugs = results.map{|r| r["organisations"]}.flatten.uniq
+        Organisation.includes(:translations).where(slug: slugs).all
+      end
+
+      def find_document_series(results)
+        return [] if results.empty?
+        slugs = results.map{|r| r["document_series"]}.flatten.uniq
+        DocumentSeries.where(slug: slugs).all
+      end
+
+      def find_operational_fields(results)
+        return [] if results.empty?
+        slugs = results.map{|r| r["operational_field"]}.flatten.uniq
+        OperationalField.where(slug: slugs).all
+      end
+
+      def merged_results
+        @docs.map do |doc|
+          Result.new(doc, @organisations, @document_series, @operational_fields)
+        end
+      end
+
+      def paginated
+        if @docs.empty?
+          Kaminari.paginate_array([]).page(@page).per(@per_page)
+        else
+          Kaminari.paginate_array(merged_results, total_count: @results['total']).page(@page).per(@per_page)
+        end
+      end
+    end
+
+    def documents
+      @documents ||= ResultSet.new(@results, @page, @per_page).paginated
     end
   end
 end

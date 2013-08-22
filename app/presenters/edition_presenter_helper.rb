@@ -2,13 +2,11 @@ module EditionPresenterHelper
   def as_hash
     {
       id: model.id,
-      type: model.type.underscore,
+      type: model.format,
       display_type: model.display_type,
       title: model.title,
-      url: context.public_document_path(model),
-      organisations: model.organisations.map { |o|
-        context.organisation_display_name(o)
-      }.to_sentence.html_safe,
+      url: model.link,
+      organisations: display_organisations.html_safe,
       display_date_microformat: display_date_microformat,
       public_timestamp: model.public_timestamp
     }
