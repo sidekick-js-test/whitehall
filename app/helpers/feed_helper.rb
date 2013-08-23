@@ -14,7 +14,7 @@ module FeedHelper
     builder.updated feed_updated_timestamp
 
     documents.each do |document|
-      builder.entry(document, id: document_id(document, builder), url: public_document_url(document), published: document.first_public_at, updated: document.public_timestamp) do |entry|
+      builder.entry(document, id: document_id(document, builder), url: document.link, published: document.public_timestamp, updated: document.public_timestamp) do |entry|
         document_as_feed_entry(document, builder, govdelivery_version)
       end
     end
@@ -58,14 +58,14 @@ module FeedHelper
       change_note = "[Updated: #{change_note}] " if change_note
       "#{change_note}#{document.summary}"
     else
-      document.summary
+      document.description
     end
   end
 
   def entry_content(document)
     change_note = document.most_recent_change_note
     change_note = "<p><em>Updated:</em> #{change_note}</p>" if change_note
-    "#{change_note}#{govspeak_edition_to_html(document)}"
+    "#{change_note}#{document.indexable_content}"
   end
 
   def feed_wants_govdelivery_version?

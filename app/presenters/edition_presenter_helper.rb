@@ -13,7 +13,7 @@ module EditionPresenterHelper
   end
 
   def link
-    context.link_to model.title, context.public_document_path(model)
+    model.link
   end
 
   def display_organisations

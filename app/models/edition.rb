@@ -357,11 +357,11 @@ class Edition < ActiveRecord::Base
   end
 
   def indexable_content
-    body_without_markup
+    body_with_markup
   end
 
-  def body_without_markup
-    Govspeak::Document.new(body).to_text
+  def body_with_markup
+    GovspeakHelper.govspeak_edition_to_html(self)
   end
 
   def section
