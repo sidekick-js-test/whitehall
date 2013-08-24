@@ -12,10 +12,6 @@ module EditionPresenterHelper
     }
   end
 
-  def link
-    model.link
-  end
-
   def display_organisations
     organisations.map { |o|
       context.organisation_display_name(o)
