@@ -40,8 +40,8 @@ module FeedHelper
   end
 
   def feed_display_type_for(document)
-    return "News story" if (document.is_a?(WorldLocationNewsArticle))
-    return "Priority" if (document.is_a?(WorldwidePriority))
+    return "News story" if document.display_type == "World location news article"
+    return "Priority" if document.display_type == "Worldwide priority"
     document.display_type
   end
 
@@ -56,7 +56,7 @@ module FeedHelper
     if govdelivery_version
       change_note = document.most_recent_change_note
       change_note = "[Updated: #{change_note}] " if change_note
-      "#{change_note}#{document.summary}"
+      "#{change_note}#{document.description}"
     else
       document.description
     end
