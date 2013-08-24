@@ -118,7 +118,7 @@ module GovspeakHelper
 
   def set_classes_for_charts(govspeak)
     return govspeak if govspeak.blank?
-    
+
     govspeak.gsub(GovspeakHelper::BARCHART_REGEXP) do
       stacked = '.mc-stacked' if $1.include? 'stacked'
       compact = '.compact' if $1.include? 'compact'
@@ -126,7 +126,7 @@ module GovspeakHelper
 
       [
        '{:',
-       '.js-barchart-table', 
+       '.js-barchart-table',
        stacked,
        compact,
        negative,
@@ -135,7 +135,7 @@ module GovspeakHelper
       ].join(' ')
     end
   end
-  
+
   def replace_internal_admin_links_in(nokogiri_doc)
     nokogiri_doc.search('a').each do |anchor|
       next unless is_internal_admin_link?(uri = anchor['href'])

@@ -361,7 +361,7 @@ class Edition < ActiveRecord::Base
   end
 
   def body_with_markup
-    GovspeakHelper.govspeak_edition_to_html(self)
+    GovspeakHelper.new.govspeak_edition_to_html(self)
   end
 
   def section
