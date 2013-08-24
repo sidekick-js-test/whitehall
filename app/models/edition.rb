@@ -16,7 +16,7 @@ class Edition < ActiveRecord::Base
   include Edition::AuditTrail
   include Edition::ActiveEditors
   include Edition::Translatable
-
+  include GovspeakHelper
   include Searchable
 
   has_many :editorial_remarks, dependent: :destroy
@@ -361,7 +361,7 @@ class Edition < ActiveRecord::Base
   end
 
   def body_with_markup
-    GovspeakHelper.new.govspeak_edition_to_html(self)
+    govspeak_edition_to_html(self)
   end
 
   def section
