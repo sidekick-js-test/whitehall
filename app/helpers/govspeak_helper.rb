@@ -214,16 +214,8 @@ module GovspeakHelper
     rescue Addressable::URI::InvalidURIError
       return false
     end
-
     admin_path = [Whitehall.router_prefix, "admin"].join("/")
-
-    if %w(http https).include?(uri.scheme)
-      truncated_link_uri = [normalise_host(uri.host), uri.path.split("/")[1,2]].join("/")
-      truncated_host_uri = [normalise_host(request.host) + admin_path].join("/")
-      truncated_link_uri == truncated_host_uri
-    else
-      uri.path.start_with?(admin_path)
-    end
+    uri.normalized_path.start_with?(admin_path)
   end
 
   def find_edition_and_supporting_page_from_uri(uri)
@@ -245,10 +237,6 @@ module GovspeakHelper
     else
       public_document_url(edition)
     end
-  end
-
-  def normalise_host(host)
-    Whitehall.public_host_for(host) || host
   end
 
   def build_govspeak_document(govspeak, images = [])

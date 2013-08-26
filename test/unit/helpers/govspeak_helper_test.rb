@@ -196,6 +196,8 @@ class GovspeakHelperTest < ActionView::TestCase
 
   test "should identify internal admin links" do
     assert is_internal_admin_link?( [Whitehall.router_prefix, "admin", "test"].join("/") )
+    assert is_internal_admin_link?( "http://whitehall-admin.dev.gov.uk/government/admin/news/214148" )
+    refute is_internal_admin_link?( "https://www.gov.uk/government/news/214148" )
     refute is_internal_admin_link?( 'http://www.google.com/' )
     refute is_internal_admin_link?( nil )
   end
@@ -334,7 +336,7 @@ class GovspeakHelperTest < ActionView::TestCase
     html = govspeak_to_html(input)
     assert_select_within_html html, "table.js-barchart-table"
   end
-  
+
   test 'will add a stacked, compact, negative barchart class to a marked table' do
         input = '
 |col|
