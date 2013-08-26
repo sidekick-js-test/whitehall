@@ -150,6 +150,8 @@ module Whitehall::DocumentFilter
         super(doc)
       end
 
+      alias :type, :format
+
       def public_timestamp
         Time.zone.parse(super)
       end
