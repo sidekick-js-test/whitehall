@@ -71,7 +71,7 @@
       }
     }
   }
-  
+
   .in-page-navigation {
     color: $white;
     margin: 0 0 20px;
@@ -88,7 +88,7 @@
       color: $white;
     }
   }
-  
+
   .publication-content {
     position: relative;
     z-index: 2;
@@ -260,6 +260,15 @@
         .comments {
           @include core-16;
         }
+      }
+    }
+    .call-to-action {
+      padding: 0.1em 0 0.1em 1em;
+      border-left: $gutter-one-third $grey-2 solid;
+      margin: 1em 0;
+
+      span.number {
+        background: none;
       }
     }
   }
