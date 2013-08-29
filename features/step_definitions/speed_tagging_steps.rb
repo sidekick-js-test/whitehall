@@ -43,7 +43,7 @@ When /^I can only tag the (?:publication|news article) with "([^"]*)" once$/ do 
   assert page.has_css?("label.checkbox", text: /#{label}/, count: 1)
 end
 
-Then /^I should be able to select the document series "([^"]*)"$/ do |name|
+Then /^I should be able to select the document series group "([^"]*)"$/ do |name|
   select name, from: 'Document series'
 end
 
