@@ -20,7 +20,7 @@ class HistoricalAccount < ActiveRecord::Base
   end
 
   def political_parties
-    political_party_ids.collect { |id| PoliticalParty.find_by_id(id.to_i) }
+    political_party_ids.select {|id| id.present? }.collect { |id| PoliticalParty.find_by_id(id.to_i) }
   end
 
   def political_membership
